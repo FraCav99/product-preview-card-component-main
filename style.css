@@ -1,0 +1,160 @@
+/* General styling */
+
+:root {
+  /* colors */
+  --dark-cyan: hsl(158, 36%, 37%);
+  --cream: hsl(30, 38%, 92%);
+  --very-dark-blue: hsl(212, 21%, 14%);
+  --dark-grayish-blue: hsl(228, 12%, 48%);
+  --white: hsl(0, 0%, 100%);
+
+  /* font */
+
+  /* 14px */
+  --p-fs: 0.875rem;
+
+  --ff-montserrat: "Montserrat", sans-serif;
+  --ff-fraunces: "Fraunces", serif;
+
+  --fw-medium: 500;
+  --fw-bold: 700;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--cream);
+
+  font-size: var(--p-fs);
+  font-weight: var(--fw-medium);
+  font-family: var(--ff-montserrat);
+
+  display: grid;
+  place-items: center;
+}
+
+/* content styling */
+
+.card {
+  --_inline-margin: 2rem;
+  background-color: var(--white);
+  color: var(--dark-grayish-blue);
+  border-radius: 10px;
+  width: min(calc(100% - var(--_inline-margin)), 600px);
+  overflow: hidden;
+  display: grid;
+}
+
+.card__image img {
+  object-fit: contain;
+}
+
+.card__body {
+  padding: 1.5em;
+}
+
+.card__body > * + * {
+  margin-top: 1.5rem;
+}
+
+.product-title,
+.discounted-price {
+  font-family: var(--ff-fraunces);
+}
+
+.product-genre {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--dark-grayish-blue);
+}
+
+.product-title {
+  color: var(--very-dark-blue);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.product-description {
+  color: var(--dark-grayish-blue);
+  font-weight: var(--fw-medium);
+  line-height: 1.5;
+}
+
+.discounted-price {
+  font-size: 2rem;
+  color: var(--dark-cyan);
+}
+
+.product-price {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.action-btn {
+  background-color: var(--dark-cyan);
+  color: var(--white);
+  width: 100%;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+  padding: 1em 0;
+  font-weight: var(--fw-bold);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.action-btn::before {
+  content: "";
+  width: 15px;
+  height: 16px;
+  background-image: url("images/icon-cart.svg");
+}
+
+.action-btn:hover {
+  filter: brightness(85%);
+}
+
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: no-wrap;
+  width: 1px;
+}
+
+.attribution {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 2em;
+}
+
+@media screen and (min-width: 600px) {
+  .card {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .card__body {
+    padding: 2rem;
+  }
+}
